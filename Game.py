@@ -51,6 +51,8 @@ while GameRunning == True and (Lives > 0 or ComputerLives > 0):
             Lives -= 1
             return("Computer wins!")
     print(GameRules())
+    print(f"You have {Lives} lives!")
+    print(f"Computer has {ComputerLives} lives!")
 
     if Lives == 0:
         print("You have run out of lives!")
