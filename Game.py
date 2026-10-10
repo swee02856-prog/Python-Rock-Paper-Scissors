@@ -4,6 +4,7 @@ import ScissorsSystem
 import LifeSystem
 import PlayAgainOrContinue
 import UserChoice
+import ComputerChoice
 from RockSystem import Rock
 from PaperSystem import Paper
 from ScissorsSystem import Scissors
@@ -13,11 +14,52 @@ from PlayAgainOrContinue import ask_play_again
 from UserChoice import get_user_choice
 from LifeSystem import ComputerLife
 
-def get_computer_choice():
-    choices = [Rock, Paper, Scissors]
-    return random.choice(choices)()
+# Establish our modules and functions
 
 print("Welcome to Rock, Paper, Scissors!")
+
+def Characters():
+    print("Who do you wanna run the 1's with?")
+    print("1. Jimmy the Joker\n2. Timmy le destroyer\n3. Billy Badass")
+    choice = input("Enter your choice (1-3): ")
+    return choice
+
+
+character_choice = Characters()
+print(character_choice)
+
+def Computer_level_choice():
+    if character_choice == "1":
+        return GG_fucking_easy()
+    elif character_choice == "2":
+        return medium()
+    elif character_choice == "3":
+        return hard()
+    else:
+        print("Error: Invalid Character routing to Regular (Medium)")
+        return medium()
+    
+
+def GG_fucking_easy():
+    if UserChoice == Rock():
+            return random.choice([Scissors(), Rock()])
+    elif UserChoice == Paper():
+            return random.choice([Rock(), Paper()])
+    elif UserChoice == Scissors():
+            return random.choice([Paper(), Scissors()])
+    return random.choice([Rock(), Paper(), Scissors()])
+def medium():
+    choices = [Rock(), Paper(), Scissors()]
+    return random.choice(choices)
+def hard():
+    choices = [Rock(), Paper(), Scissors()]
+    if UserChoice == Rock():
+        return random.choice([Paper(), Rock()])
+    elif UserChoice == Paper():
+        return random.choice([Rock(), Paper()])
+    elif UserChoice == Scissors():
+        return random.choice([Rock(), Scissors()])
+    return random.choice(choices)
 
 GameRunning = True
 Lives = Life()
@@ -29,7 +71,7 @@ while GameRunning == True and (Lives > 0 or ComputerLives > 0):
     print(UserChoice)
 
     input("Press to get Computer's Choice...")
-    ComputerChoice = get_computer_choice()
+    ComputerChoice = Computer_level_choice()
     print(ComputerChoice)
 
     input("Press Enter to see the result...")
@@ -50,6 +92,7 @@ while GameRunning == True and (Lives > 0 or ComputerLives > 0):
         else:
             Lives -= 1
             return("Computer wins!")
+        
     print(GameRules())
     print(f"You have {Lives} lives!")
     print(f"Computer has {ComputerLives} lives!")
