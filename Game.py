@@ -5,6 +5,7 @@ import LifeSystem
 import PlayAgainOrContinue
 import UserChoice
 import ComputerChoice
+import Voicelines
 from RockSystem import Rock
 from PaperSystem import Paper
 from ScissorsSystem import Scissors
@@ -27,6 +28,8 @@ def Characters():
 
 character_choice = Characters()
 print(character_choice)
+
+
 
 def Computer_level_choice():
     if character_choice == "1":
@@ -61,6 +64,9 @@ def hard():
         return random.choice([Rock(), Scissors()])
     return random.choice(choices)
 
+def Voiceline():
+    return Voicelines.CharacterVoiceline(character_choice)
+
 GameRunning = True
 Lives = Life()
 ComputerLives = ComputerLife()
@@ -73,6 +79,8 @@ while GameRunning == True and (Lives > 0 or ComputerLives > 0):
     input("Press to get Computer's Choice...")
     ComputerChoice = Computer_level_choice()
     print(ComputerChoice)
+
+    print(Voiceline())
 
     input("Press Enter to see the result...")
     
@@ -92,6 +100,7 @@ while GameRunning == True and (Lives > 0 or ComputerLives > 0):
         else:
             Lives -= 1
             return("Computer wins!")
+        
         
     print(GameRules())
     print(f"You have {Lives} lives!")
