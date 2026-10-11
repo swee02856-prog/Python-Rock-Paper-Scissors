@@ -17,19 +17,11 @@ from LifeSystem import ComputerLife
 
 # Establish our modules and functions
 
-print("Welcome to Rock, Paper, Scissors!")
-
 def Characters():
     print("Who do you wanna run the 1's with?")
     print("1. Jimmy the Joker\n2. Timmy le destroyer\n3. Billy Badass")
     choice = input("Enter your choice (1-3): ")
     return choice
-
-
-character_choice = Characters()
-print(character_choice)
-
-
 
 def Computer_level_choice():
     if character_choice == "1":
@@ -41,7 +33,6 @@ def Computer_level_choice():
     else:
         print("Error: Invalid Character routing to Regular (Medium)")
         return medium()
-    
 
 def GG_fucking_easy():
     if UserChoice == Rock():
@@ -64,8 +55,19 @@ def hard():
         return random.choice([Rock(), Scissors()])
     return random.choice(choices)
 
+
+print("Welcome to Rock, Paper, Scissors!")
+
+character_choice = Characters()
+print(character_choice)
+
 def Voiceline():
     return Voicelines.CharacterVoiceline(character_choice)
+
+def Greeting():
+    return Voicelines.CharacterGreeting(character_choice)
+
+print(Greeting())
 
 GameRunning = True
 Lives = Life()
@@ -101,7 +103,7 @@ while GameRunning == True and (Lives > 0 or ComputerLives > 0):
             Lives -= 1
             return("Computer wins!")
         
-        
+
     print(GameRules())
     print(f"You have {Lives} lives!")
     print(f"Computer has {ComputerLives} lives!")
